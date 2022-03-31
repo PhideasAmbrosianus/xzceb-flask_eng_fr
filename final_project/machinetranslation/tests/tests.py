@@ -4,6 +4,10 @@ Unit tester for Translator module
 from asyncio.windows_events import NULL
 import unittest
 
+#Allow this test module to test modules in parent folder from here
+import sys
+sys.path.append("..\\")
+
 from translator import english_to_french, french_to_english
 
 class Testenglish_to_french(unittest.TestCase):
@@ -11,6 +15,7 @@ class Testenglish_to_french(unittest.TestCase):
         """
         Check for common input issues with english_to_french
         """
+        self.assertNotEqual(english_to_french(NULL),NULL)
         self.assertEqual(english_to_french('Hello'),'Bonjour')
         self.assertEqual(english_to_french(NULL),'')
         self.assertEqual(english_to_french(''),'')
@@ -23,6 +28,7 @@ class Testfrench_to_english(unittest.TestCase):
         """
         Check for common input issues with french_to_english
         """
+        self.assertNotEqual(french_to_english(NULL),NULL)
         self.assertEqual(french_to_english('Bonjour'),'Hello')
         self.assertEqual(french_to_english(0),'')
         self.assertEqual(french_to_english(NULL),'')
